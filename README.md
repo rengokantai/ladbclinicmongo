@@ -22,3 +22,20 @@ command
 ```
 db.population.count()
 ```
+
+```
+db.accidents.aggregate([
+  {$lookup:{
+    from:"vehicles",
+    localField:"Index",
+    foreignField:"Index",
+    as:"Vehicles"}
+  },
+  {$unwind:"$Vehicles"},
+  {$project:{Index:1,Severity:1,_id:0,Type:"$Vehicles.Vehicle_Type"}},
+  {$out:"combined"}
+])
+```
+```
+db.combined.find()
+```
