@@ -6,3 +6,19 @@
 |can change the data structure|Data integrity issues|
 |Can store different data together|Client responsible for data|
 |Easy to add new fields|Hard to impose restrictions|
+
+## 2. Create a Database
+### 3 Explore the data structure
+download file
+```
+wget https://data.ca.gov/sites/default/files/CA_DRU_proj_2010-2060.csv
+```
+### 4 Create a database in MongoDB
+```
+mongoimport --collection population --file CA_DRU_proj_2010-2060.csv --type csv --headerline
+mongo
+```
+command
+```
+db.population.count()
+```
